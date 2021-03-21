@@ -3,3 +3,4 @@ use actix_web::App;
 
 pub mod home;
 pub mod web;
+pub mod api;

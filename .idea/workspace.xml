@@ -7,7 +7,13 @@
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated />
@@ -22,23 +28,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce757e21-84d1-4eb9-9200-66df1af8ffed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/minos-auth.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/home.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/web.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/error.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/handlebars_utils.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/register.handlebars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/user.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/api/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/api/register.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/web/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/web/register.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/password_hashing.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/web.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/handlebars_utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/handlebars_utils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +67,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
@@ -73,6 +81,11 @@
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
   </component>
   <component name="RunManager" selected="Cargo.Expand minos_auth::utils::error">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Expand minos_auth::utils::error" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="expand --bin minos-auth --color=always --theme=GitHub --tests utils::error" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -103,11 +116,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Expand minos_auth::utils::error" />
@@ -129,7 +137,8 @@
       <workItem from="1615570342472" duration="1725000" />
       <workItem from="1615724555203" duration="218000" />
       <workItem from="1615740949068" duration="150000" />
-      <workItem from="1616318521351" duration="8345000" />
+      <workItem from="1616318521351" duration="9140000" />
+      <workItem from="1616355120098" duration="8991000" />
     </task>
     <servers />
   </component>
@@ -141,36 +150,81 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="107" y="278" key="#SQL_Dialects" timestamp="1616356833681">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="107" y="278" key="#SQL_Dialects/0.0.1368.872@0.0.1368.872" timestamp="1616356833681" />
+    <state x="277" y="95" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616356890132">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="277" y="95" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1616356890132" />
+    <state x="444" y="238" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616362571181">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="444" y="238" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1368.872@0.0.1368.872" timestamp="1616362571181" />
     <state x="490" y="152" key="#com.intellij.ide.util.MemberChooser" timestamp="1616321896013">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="490" y="152" key="#com.intellij.ide.util.MemberChooser/0.0.1368.872@0.0.1368.872" timestamp="1616321896013" />
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom" timestamp="1616351800604">
+    <state x="415" y="183" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616363428316">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1616351800604" />
-    <state width="1326" height="227" key="GridCell.Tab.0.center" timestamp="1616351800604">
+    <state x="415" y="183" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1368.872@0.0.1368.872" timestamp="1616363428316" />
+    <state width="907" height="227" key="GridCell.Tab.0.bottom" timestamp="1616364185163">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1616351800604" />
-    <state width="1326" height="227" key="GridCell.Tab.0.left" timestamp="1616351800604">
+    <state width="907" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1616364185163" />
+    <state width="907" height="227" key="GridCell.Tab.0.center" timestamp="1616364185163">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1616351800604" />
-    <state width="1326" height="227" key="GridCell.Tab.0.right" timestamp="1616351800604">
+    <state width="907" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1616364185163" />
+    <state width="907" height="227" key="GridCell.Tab.0.left" timestamp="1616364185163">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1616351800604" />
+    <state width="907" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1616364185163" />
+    <state width="907" height="227" key="GridCell.Tab.0.right" timestamp="1616364185163">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="907" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1616364185163" />
+    <state width="217" height="457" key="HiddenNamespacesPopup" timestamp="1616361490787">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="217" height="457" key="HiddenNamespacesPopup/0.0.1368.872@0.0.1368.872" timestamp="1616361490787" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1616362471830">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1368.872@0.0.1368.872" timestamp="1616362471830" />
+    <state x="584" y="340" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1616364074800">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="584" y="340" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.1368.872@0.0.1368.872" timestamp="1616364074800" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1616351740210">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state width="600" height="428" key="javadoc.popup/0.0.1368.872@0.0.1368.872" timestamp="1616351740210" />
+    <state x="347" y="184" width="672" height="678" key="search.everywhere.popup" timestamp="1616361624996">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="347" y="184" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1616361624996" />
   </component>
 </project>

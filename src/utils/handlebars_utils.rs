@@ -1,4 +1,4 @@
-use crate::utils::error::WebsiteErrors;
+use crate::utils::error::WebsiteError;
 use anyhow::Result;
 use handlebars::{Handlebars, TemplateError};
 use log::{error, info};
@@ -34,7 +34,7 @@ impl<'a> HandlebarsUtils<'a> {
         }
     }
 
-    pub fn render_handlebar<T>(&self, name: &str, data: &T) -> Result<String, WebsiteErrors>
+    pub fn render_handlebar<T>(&self, name: &str, data: &T) -> Result<String, WebsiteError>
     where
         T: Serialize,
     {

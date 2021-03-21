@@ -1,0 +1,22 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13.2-alpine
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      # DO NOT USE THE FOLLOWING CREDENTIALS IN PRODUCTION!
+      # This is only for testing purposes.
+      - POSTGRES_PASSWORD=testing_password
+      - APP_DB_USER=minos
+      - APP_DB_PASS=minospass
+      - APP_DB_NAME=docker
+    volumes:
+      - ./target/db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
