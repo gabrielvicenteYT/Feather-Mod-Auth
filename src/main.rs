@@ -10,6 +10,7 @@ pub mod routes;
 pub mod state;
 pub mod utils;
 pub mod models;
+pub mod config;
 
 #[actix_web::main]
 async fn main() -> Result<()> {
