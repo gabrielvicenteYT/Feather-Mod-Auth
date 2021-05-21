@@ -7,6 +7,8 @@ use std::fs;
 use std::fs::ReadDir;
 use std::path::PathBuf;
 use std::process::exit;
+use crate::state::config::Settings;
+use std::sync::Arc;
 
 pub struct HandlebarsUtils<'a> {
     handlebars: Handlebars<'a>,
@@ -42,14 +44,11 @@ impl<'a> HandlebarsUtils<'a> {
     }
 }
 
-impl<'a> Default for HandlebarsUtils<'a> {
-    fn default() -> Self {
+impl<'a> HandlebarsUtils<'a> {
+    pub fn default(cfg: Arc<Settings>) -> Self {
         HandlebarsUtils {
             handlebars: Handlebars::new(),
-            base_path: dotenv::var("TEMPLATE_PATH")
-                .expect("The 'TEMPLATE_PATH' environment variable is missing.")
-                .parse()
-                .expect("The 'TEMPLATE_PATH' variable is not valid, please check your input."),
+            base_path: cfg.templating.path.clone().parse().unwrap(),
         }
     }
 }

@@ -1,0 +1,15 @@
+[server]
+port = "8000"
+host = "127.0.0.1"
+
+[log]
+level = "info"
+
+[database]
+url = "postgres://root:testing_password@0.0.0.0:5432/minos-auth?timeout=60"
+
+[general]
+api_enabled = false
+
+[templating]
+path = "./templates"

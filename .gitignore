@@ -1,5 +1,6 @@
 /target
 .env
+config.toml
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/rust,intellij,clion

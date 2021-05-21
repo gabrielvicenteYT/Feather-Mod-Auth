@@ -47,12 +47,12 @@ impl User {
         Ok(())
     }
 
-    pub async fn check_username_availability(username: &String, pool: &PgPool) -> Result<bool, WebsiteError>{
+    pub async fn check_username_availability(username: &String, pool: &PgPool) -> Result<bool, WebsiteError> {
         let mut tx = pool.begin().await?;
-        let result = sqlx::query(r#"
-            SELECT 1 FROM minos.users WHERE username = $1
-        "#)
-            .bind(username)
+        let result = sqlx::query!(r#"
+            SELECT 1 AS exists FROM minos.users WHERE username = $1
+        "#,
+         username)
             .fetch_optional(&mut tx)
             .await?;
         Ok(result.is_none())

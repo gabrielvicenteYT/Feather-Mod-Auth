@@ -1,0 +1,38 @@
+{
+  "db": "PostgreSQL",
+  "1c7946cb1b59cf1143b29a24e45fdaf57318ed2a1f4e68c1d9eeccdca960346e": {
+    "query": "\n            INSERT INTO minos.users (username, first_name, last_name, password) VALUES ($1, $2, $3, $4)\n        ",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Bytea"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "b814ae49142812297f662286c50c87b712c9118bcc19733d9c745aeede2508b3": {
+    "query": "\n            SELECT 1 AS exists FROM minos.users WHERE username = $1\n        ",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "exists",
+          "type_info": "Int4"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      },
+      "nullable": [
+        null
+      ]
+    }
+  }
+}
