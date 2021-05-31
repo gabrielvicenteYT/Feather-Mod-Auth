@@ -13,5 +13,6 @@ CREATE TABLE minos.users
     password      BYTEA       NOT NULL, --The password is encrypted.
     creation_date timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_date   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    banned        BOOLEAN     NOT NULL DEFAULT FALSE
+    banned        BOOLEAN     NOT NULL DEFAULT FALSE,
+    ban_reason    text
 );
