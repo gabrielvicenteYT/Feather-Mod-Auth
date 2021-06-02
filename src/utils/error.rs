@@ -1,15 +1,22 @@
-use actix_web::{error, HttpResponse};
-use std::fmt;
-use thiserror::Error;
 use actix_web::dev::HttpResponseBuilder;
 use actix_web::http::StatusCode;
-use serde::{Serialize, Deserialize};
+use actix_web::{error, HttpResponse};
+use serde::{Deserialize, Serialize};
+use std::fmt;
+use thiserror::Error;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Debug, Clone)]
 pub struct Error {
-    pub(crate) ok: bool,
-    pub(crate) name: &'static str,
-    pub(crate) description: &'static str
+    pub ok: bool,
+    pub name: &'static str,
+    pub description: &'static str,
+    pub issues: Option<Vec<ValidationIssue>>,
+}
+#[derive(Serialize, Clone, Debug)]
+pub struct ValidationIssue {
+    pub field: String,
+    pub error_name: String,
+    pub error_description: String,
 }
 
 #[derive(Error, Debug)]
@@ -21,18 +28,30 @@ pub enum WebsiteError {
     #[error("An error occurred while doing an operation to the database.")]
     DatabaseError(#[from] sqlx::Error),
     #[error("An error occurred while processing your request.")]
-    CustomError(Error, StatusCode)
+    CustomError(Error, StatusCode),
+    #[error("There are errors with the function input.")]
+    ValidationError(Vec<ValidationIssue>),
 }
 impl WebsiteError {
     fn build_error(&self) -> Error {
         match self {
-            WebsiteError::RenderError(_) | WebsiteError::CryptoError() | WebsiteError::DatabaseError(_) => Error {
+            WebsiteError::RenderError(_)
+            | WebsiteError::CryptoError()
+            | WebsiteError::DatabaseError(_) => Error {
                 ok: false,
                 name: "internal_error",
-                description: "There was an issue while executing this action."
+                description: "There was an issue while executing this action.",
+                issues: None,
             },
 
-            WebsiteError::CustomError(error, _) => error.clone()
+            WebsiteError::CustomError(error, _) => error.clone(),
+            WebsiteError::ValidationError(issues) => Error {
+                ok: false,
+                name: "invalid_input",
+                description:
+                    "There was issues with your inputs. Please check them in the `issues` field.",
+                issues: Some(issues.clone()),
+            },
         }
     }
 }
@@ -42,13 +61,11 @@ impl error::ResponseError for WebsiteError {
             WebsiteError::RenderError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             WebsiteError::CryptoError() => StatusCode::INTERNAL_SERVER_ERROR,
             WebsiteError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            WebsiteError::CustomError(_, status) => status.clone(),
+            WebsiteError::CustomError(_, status) => *status,
+            WebsiteError::ValidationError(_) => StatusCode::BAD_REQUEST,
         }
     }
     fn error_response(&self) -> HttpResponse {
-        return HttpResponseBuilder::new(self.status_code())
-            .json(self.build_error());
+        return HttpResponseBuilder::new(self.status_code()).json(self.build_error());
     }
-
-
 }

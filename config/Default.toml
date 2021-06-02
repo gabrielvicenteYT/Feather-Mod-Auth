@@ -10,6 +10,8 @@ url = "postgres://root:testing_password@0.0.0.0:5432/minos-auth?timeout=60"
 
 [general]
 api_enabled = false
+icon_domain= ["cdn.modrinth.com", "cdn.redbluefla.me"]
+
 
 [templating]
 path = "./templates"

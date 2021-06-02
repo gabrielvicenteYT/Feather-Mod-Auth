@@ -1,7 +1,7 @@
-pub mod register;
 pub mod home;
-pub use register::display_register_page;
+pub mod register;
 use actix_web::web;
+pub use register::display_register_page;
 
 pub fn routes_import(cfg: &mut web::ServiceConfig) {
     // Add services here:

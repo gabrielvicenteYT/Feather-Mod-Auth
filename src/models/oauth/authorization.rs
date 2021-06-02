@@ -1,8 +1,8 @@
-use uuid::Uuid;
-use chrono::DateTime;
 use crate::models::DbDateTime;
+use chrono::DateTime;
+use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
-
+use uuid::Uuid;
 /// An authorization is the link between an user and a client.
 /// This is the model that retains an approval from a user to a client, using the allowed scopes.
 #[derive(FromRow, Serialize, Deserialize, Debug)]

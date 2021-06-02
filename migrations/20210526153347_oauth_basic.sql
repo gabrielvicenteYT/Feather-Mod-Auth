@@ -45,7 +45,7 @@ CREATE TABLE minos.refresh_tokens
 (
     key              text      NOT NULL PRIMARY KEY,
     authorization_id text      NOT NULL,
-    removal_time     timestamp NOT NULL DEFAULT false,
+    removal_time     timestamp,
 
     CONSTRAINT authorizationid
         FOREIGN KEY (authorization_id)

@@ -3,22 +3,21 @@ use std::sync::{Arc, RwLock};
 
 use handlebars::Handlebars;
 
-use handlebars_utils::HandlebarsUtils;
 use crate::state::config::Settings;
+use handlebars_utils::HandlebarsUtils;
 
-pub mod handlebars_utils;
 pub mod config;
+pub mod handlebars_utils;
 pub mod session;
-
 
 //region HandlebarManager
 pub struct HandlebarManager {
     pub handlebars: Arc<RwLock<HandlebarsUtils<'static>>>,
 }
 impl HandlebarManager {
-    pub fn default(cfg: Arc<Settings>) -> Self {
+    pub fn default() -> Self {
         HandlebarManager {
-            handlebars: Arc::new(RwLock::new(HandlebarsUtils::default(cfg))),
+            handlebars: Arc::new(RwLock::new(HandlebarsUtils::default())),
         }
     }
 }
@@ -31,7 +30,7 @@ impl HandlebarManager {
 impl Clone for HandlebarManager {
     fn clone(&self) -> Self {
         HandlebarManager {
-            handlebars: self.handlebars.clone()
+            handlebars: self.handlebars.clone(),
         }
     }
 }
@@ -39,19 +38,19 @@ impl Clone for HandlebarManager {
 
 //region ConfigManager
 pub struct ConfigManager {
-    pub config: Arc<Settings>
+    pub config: Arc<Settings>,
 }
 impl From<Settings> for ConfigManager {
     fn from(config: Settings) -> Self {
         ConfigManager {
-            config: Arc::new(config)
+            config: Arc::new(config),
         }
     }
 }
 impl Clone for ConfigManager {
     fn clone(&self) -> Self {
         ConfigManager {
-            config: self.config.clone()
+            config: self.config.clone(),
         }
     }
 }

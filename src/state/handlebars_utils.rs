@@ -1,3 +1,4 @@
+use crate::state::config::Settings;
 use crate::utils::error::WebsiteError;
 use anyhow::Result;
 use handlebars::{Handlebars, TemplateError};
@@ -7,8 +8,8 @@ use std::fs;
 use std::fs::ReadDir;
 use std::path::PathBuf;
 use std::process::exit;
-use crate::state::config::Settings;
 use std::sync::Arc;
+use crate::CONFIG;
 
 pub struct HandlebarsUtils<'a> {
     handlebars: Handlebars<'a>,
@@ -45,10 +46,10 @@ impl<'a> HandlebarsUtils<'a> {
 }
 
 impl<'a> HandlebarsUtils<'a> {
-    pub fn default(cfg: Arc<Settings>) -> Self {
+    pub fn default() -> Self {
         HandlebarsUtils {
             handlebars: Handlebars::new(),
-            base_path: cfg.templating.path.clone().parse().unwrap(),
+            base_path: CONFIG.templating.path.clone().parse().unwrap(),
         }
     }
 }

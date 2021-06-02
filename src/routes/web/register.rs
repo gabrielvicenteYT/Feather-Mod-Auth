@@ -1,10 +1,9 @@
-
+use crate::state::HandlebarManager;
 use crate::utils::error::WebsiteError;
 use actix_web::{get, web, HttpResponse, Result};
 use handlebars::Handlebars;
 use serde::{Deserialize, Serialize};
 use std::borrow::Borrow;
-use crate::state::HandlebarManager;
 
 #[derive(Serialize, Deserialize)]
 pub struct RegisterData {
@@ -12,12 +11,14 @@ pub struct RegisterData {
 }
 
 #[get("/register")]
-pub async fn display_register_page(state: web::Data<HandlebarManager>) -> Result<HttpResponse, WebsiteError> {
+pub async fn display_register_page(
+    state: web::Data<HandlebarManager>,
+) -> Result<HttpResponse, WebsiteError> {
     Ok(HttpResponse::Ok().body(
         state
             .handlebars
             .read()
             .unwrap()
-            .render_handlebar("main", &RegisterData {})?
+            .render_handlebar("main", &RegisterData {})?,
     ))
 }

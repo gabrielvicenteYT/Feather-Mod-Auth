@@ -1,8 +1,8 @@
 use config::{Config, ConfigError, Environment, File};
+use log::error;
 use serde::Deserialize;
 use std::fmt;
 use std::time::Duration;
-use log::error;
 
 const CONFIG_FILE_PATH: &str = "./config/Default.toml";
 const CONFIG_FILE_PREFIX: &str = "./config/";
@@ -35,6 +35,7 @@ pub struct Templating {
 #[derive(Debug, Deserialize, Clone)]
 pub struct General {
     pub api_enabled: bool,
+    pub icon_domain: Vec<String>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -78,7 +79,7 @@ impl Settings {
     pub fn new() -> Result<Self, ConfigError> {
         let env = std::env::var("RUST_ENV").unwrap_or_else(|_| "Development".into());
         let mut s = Config::new();
-        s.set("env", env.clone())?;
+        s.set("env", env)?;
 
         s.merge(File::with_name(CONFIG_FILE_PATH))?;
 

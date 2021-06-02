@@ -1,6 +1,6 @@
-use sodiumoxide::crypto::pwhash::argon2id13;
 use crate::utils::error::WebsiteError;
 use crate::utils::error::WebsiteError::CryptoError;
+use sodiumoxide::crypto::pwhash::argon2id13;
 
 pub fn hash_password(password: String) -> Result<Vec<u8>, WebsiteError> {
     sodiumoxide::init().unwrap();
@@ -10,10 +10,8 @@ pub fn hash_password(password: String) -> Result<Vec<u8>, WebsiteError> {
         argon2id13::MEMLIMIT_INTERACTIVE,
     ) {
         Ok(hash) => Ok(hash.0.to_vec()),
-        Err(_) => Err(CryptoError())
+        Err(_) => Err(CryptoError()),
     }
-
-
 }
 pub fn verify_password(password: String, hash: Vec<u8>) -> Result<bool, WebsiteError> {
     sodiumoxide::init().unwrap();

@@ -1,11 +1,11 @@
-use uuid::Uuid;
 use crate::models::DbDateTime;
-use sqlx::PgPool;
 use crate::utils::error::WebsiteError;
 use crate::utils::password_hashing::hash_password;
 use log::info;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
+use sqlx::PgPool;
+use uuid::Uuid;
 
 #[derive(Deserialize)]
 pub struct UserCreationRequest {
@@ -22,7 +22,8 @@ pub struct User {
     first_name: String,
     last_name: String,
     #[serde(skip_serializing)]
-    password: Vec<u8>,
+    #[sqlx(default)]
+    password: Option<Vec<u8>>,
     creation_date: DbDateTime,
     update_date: DbDateTime,
 }
@@ -47,14 +48,19 @@ impl User {
         Ok(())
     }
 
-    pub async fn check_username_availability(username: &String, pool: &PgPool) -> Result<bool, WebsiteError> {
+    pub async fn check_username_availability(
+        username: &String,
+        pool: &PgPool,
+    ) -> Result<bool, WebsiteError> {
         let mut tx = pool.begin().await?;
-        let result = sqlx::query!(r#"
+        let result = sqlx::query!(
+            r#"
             SELECT 1 AS exists FROM minos.users WHERE username = $1
         "#,
-         username)
-            .fetch_optional(&mut tx)
-            .await?;
+            username
+        )
+        .fetch_optional(&mut tx)
+        .await?;
         Ok(result.is_none())
     }
 }

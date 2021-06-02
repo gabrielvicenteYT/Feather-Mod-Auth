@@ -6,7 +6,7 @@ CREATE SCHEMA IF NOT EXISTS minos;
 
 CREATE TABLE minos.users
 (
-    id            UUID        NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+    id            varchar(6)        NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
     username      varchar(32) NOT NULL,
     first_name    varchar(32) NOT NULL,
     last_name     varchar(32) NOT NULL,

@@ -1,7 +1,12 @@
-use uuid::Uuid;
-use chrono::DateTime;
+use crate::models::validators::oauth::oauth_client::OAuthClientCreationRequest;
 use crate::models::DbDateTime;
-use sqlx::FromRow;
+use crate::utils::error::{ValidationIssue, WebsiteError};
+use chrono::DateTime;
+use regex::Regex;
+use serde::{Deserialize, Serialize};
+use sqlx::{FromRow, PgPool};
+use url::Url;
+use uuid::Uuid;
 
 /// This struct represnts the database version of the oauth client.
 /// The table linked to this model is `minos.oauth_clients`
@@ -12,7 +17,8 @@ pub struct OAuthClient {
     pub id: String,
     /// The secret of the OAuth client.
     /// This is a hashed representation of the secret, using the One-Way hashing system available on [crate::utils::password_hashing]
-    pub secret: String,
+    #[sqlx(default)]
+    pub secret: Option<String>,
     /// The owner of this client.
     /// This is a foreign key for the `minos.users (id)` row.
     pub owner: Uuid,
@@ -58,5 +64,7 @@ pub struct OAuthClient {
     /// A reason for the disabling of the client.
     /// This field can be None in in the event of a user desactivation, but it has to be filled if the action comes from the administrators.
     /// This is displayed in the error message displayed to the client.
-    pub disabled_reason: Option<String>
+    pub disabled_reason: Option<String>,
 }
+
+impl OAuthClient {}
