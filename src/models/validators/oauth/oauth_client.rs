@@ -4,12 +4,12 @@ use crate::utils::error::{ValidationIssue, WebsiteError};
 use crate::utils::id::{generate_id, generate_secret};
 use crate::utils::password_hashing::hash_password;
 use async_trait::async_trait;
-use chrono::NaiveDateTime;
+
 use lazy_static::lazy_static;
 use regex::Regex;
 use serde::Deserialize;
 use sqlx::PgPool;
-use std::convert::TryInto;
+
 use url::Url;
 use sqlx::FromRow;
 use uuid::Uuid;

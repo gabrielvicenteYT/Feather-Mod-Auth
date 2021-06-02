@@ -1,9 +1,9 @@
 use crate::state::HandlebarManager;
 use crate::utils::error::WebsiteError;
 use actix_web::{get, web, HttpResponse, Result};
-use handlebars::Handlebars;
+
 use serde::{Deserialize, Serialize};
-use std::borrow::Borrow;
+
 
 #[derive(Serialize, Deserialize)]
 pub struct RegisterData {

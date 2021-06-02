@@ -1,7 +1,7 @@
-use std::borrow::Borrow;
+
 use std::sync::{Arc, RwLock};
 
-use handlebars::Handlebars;
+
 
 use crate::state::config::Settings;
 use handlebars_utils::HandlebarsUtils;

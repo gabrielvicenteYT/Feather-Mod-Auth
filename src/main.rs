@@ -1,12 +1,12 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
-use anyhow::{Context, Result};
+use actix_web::{App, HttpServer};
+use anyhow::{Result};
 use log::{error, info, LevelFilter};
 use sqlx::PgPool;
 
-use crate::state::{ConfigManager, HandlebarManager};
+use crate::state::{HandlebarManager};
 use lazy_static::lazy_static;
 use state::config::Settings;
-use state::handlebars_utils::HandlebarsUtils;
+
 use std::str::FromStr;
 
 pub mod models;

@@ -1,6 +1,6 @@
 use lazy_static::lazy_static;
 use rand::distributions::Uniform;
-use rand::{CryptoRng, Rng, RngCore, SeedableRng};
+use rand::{Rng, SeedableRng};
 use rand_hc::Hc128Rng;
 // Custom base 55 (without near characters: "0oO;IilL")
 lazy_static! {

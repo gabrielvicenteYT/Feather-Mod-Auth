@@ -1,15 +1,9 @@
 use config::{Config, ConfigError, Environment, File};
-use log::error;
+
 use serde::Deserialize;
 use std::fmt;
-use std::time::Duration;
 
 const CONFIG_FILE_PATH: &str = "./config/Default.toml";
-const CONFIG_FILE_PREFIX: &str = "./config/";
-
-fn default_duration() -> Duration {
-    return Duration::from_secs(5);
-}
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct Log {

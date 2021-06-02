@@ -1,14 +1,14 @@
-use crate::state::config::Settings;
+
 use crate::utils::error::WebsiteError;
 use anyhow::Result;
-use handlebars::{Handlebars, TemplateError};
+use handlebars::{Handlebars};
 use log::{error, info};
 use serde::Serialize;
-use std::fs;
-use std::fs::ReadDir;
+
+
 use std::path::PathBuf;
 use std::process::exit;
-use std::sync::Arc;
+
 use crate::CONFIG;
 
 pub struct HandlebarsUtils<'a> {

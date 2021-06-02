@@ -1,8 +1,8 @@
 use actix_web::dev::HttpResponseBuilder;
 use actix_web::http::StatusCode;
 use actix_web::{error, HttpResponse};
-use serde::{Deserialize, Serialize};
-use std::fmt;
+use serde::{Serialize};
+
 use thiserror::Error;
 
 #[derive(Serialize, Debug, Clone)]
