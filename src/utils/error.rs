@@ -1,7 +1,7 @@
 use actix_web::dev::HttpResponseBuilder;
 use actix_web::http::StatusCode;
 use actix_web::{error, HttpResponse};
-use serde::{Serialize};
+use serde::Serialize;
 
 use thiserror::Error;
 
@@ -22,7 +22,7 @@ pub struct ValidationIssue {
 #[derive(Error, Debug)]
 pub enum WebsiteError {
     #[error("template rendering error")]
-    RenderError(#[from] handlebars::RenderError),
+    RenderError(#[from] askama::Error),
     #[error("An error occurred while hasing the password.")]
     CryptoError(),
     #[error("An error occurred while doing an operation to the database.")]

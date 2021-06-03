@@ -10,10 +10,10 @@ use regex::Regex;
 use serde::Deserialize;
 use sqlx::PgPool;
 
-use url::Url;
-use sqlx::FromRow;
-use uuid::Uuid;
 use sqlx::postgres::PgRow;
+use sqlx::FromRow;
+use url::Url;
+use uuid::Uuid;
 
 lazy_static! {
     static ref HOST_REGEX: Regex = Regex::new(r"^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$").unwrap();
@@ -100,22 +100,18 @@ impl Validation for OAuthClientCreationRequest {
     }
 }
 impl OAuthClientCreationRequest {
-    pub async fn insert(
-        &self,
-        user_id: Uuid,
-        pool: &PgPool,
-    ) -> Result<OAuthClient, WebsiteError> {
+    pub async fn insert(&self, user_id: Uuid, pool: &PgPool) -> Result<OAuthClient, WebsiteError> {
         // Generate elements needed:
         let id = generate_id(12);
         let secret = generate_secret(24);
         let secret_hash = hash_password(secret.clone())?;
         let js_domains: Option<&[String]> = match &self.js_domains {
             Some(e) => Some(e.as_slice()),
-            None => None
+            None => None,
         };
         let callback_urls: Option<&[String]> = match &self.callback_urls {
             Some(e) => Some(e.as_slice()),
-            None => None
+            None => None,
         };
         let obj: PgRow = sqlx::query_as!(
             OAuthClient,

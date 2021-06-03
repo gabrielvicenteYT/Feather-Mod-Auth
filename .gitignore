@@ -187,3 +187,8 @@ fabric.properties
 # Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,intellij,clion
+
+static/css/main.css
+static/css/main.min.css
+
+node_modules/

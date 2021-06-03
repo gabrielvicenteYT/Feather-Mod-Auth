@@ -24,6 +24,7 @@ pub struct Database {
 #[derive(Debug, Deserialize, Clone)]
 pub struct Templating {
     pub path: String,
+    pub static_dir: String,
 }
 
 #[derive(Debug, Deserialize, Clone)]
