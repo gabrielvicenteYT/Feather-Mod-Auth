@@ -1,6 +1,6 @@
+use actix_files as fs;
 use actix_web::{App, HttpServer};
 use anyhow::Result;
-use actix_files as fs;
 use log::{error, info, LevelFilter};
 use sqlx::PgPool;
 

@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title>{% block title %}{{ title }} | Minos{% endblock %}</title>
     {% block meta %}{% endblock %}
-    <link rel="stylesheet" type="text/css" href="/static/css/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.min.css"/>
     {% block head %}{% endblock %}
 </head>
 <body class="bg-bg text-fg">
 <div class="p-6 mx-auto my-2 border-2 shadow text-fg max-w-screen-lg bg-panel border-panel-border">
     {% block content %}{% endblock %}
+</div>
+<div class="text-gray-600 text-xs flex justify-center text-center">
+    <div>
+        Minos is an opensource authentication server developed by Modrinth and contributors.<br/>
+        <!-- Feel free to remove the text below once you did change the theme,
+        but please keep the one present above.-->
+        This instance is using the default theme.
+    </div>
 </div>
 </body>
 </html>

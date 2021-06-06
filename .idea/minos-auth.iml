@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/proc_config_derive/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/proc_config_derive/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/proc_config/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zoho-transmail/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/proc_config_derive/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
